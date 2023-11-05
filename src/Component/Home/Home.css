@@ -1,0 +1,32 @@
+.Img{
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+   
+}
+/* .profileImg{
+    position: absolute;
+    top: -40;
+} */
+.proImg{
+    margin-top: -35px;
+    object-fit:  cover;
+}
+.desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postUserName{
+    font-weight: bold;
+}
+/* .postdesc{
+    font-size: 10px;
+    font-weight: 100;
+} */
+.inputpost{
+    width: 450px;
+    height: 8vh;
+    padding: 2px;
+}
+

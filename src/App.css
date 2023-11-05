@@ -1,38 +1,187 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* ProfileDropdown.css */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .profile-dropdown-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .profile-dropdown-button svg {
+    vertical-align: middle;
+    margin-left: 5px; /* Add space between the button text and the caret-down icon */
+   margin-top: 10px;
   }
-}
+  
+  .profile-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 20px;
+    margin-left: 100px;
+    min-width: 160px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+  
+  .profile-dropdown-content a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+  }
+  
+  .profile-dropdown-content a:hover {
+    background-color: #f2f2f2;
+  }
+  profile-popup {
+    position: relative;
+  
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(33, 33, 33, 0.2);
+    width: 50%;
+    height: 65vh;
+    background-color: #212020;
+    color: white;
+  }
+  .popup-edit{
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    height: 90vh;
+  }
+  .popup-content {
+    /* display: flex;
+    justify-content: space-between; */
+    margin-bottom: 20px;
+    border-bottom: 0.5px solid #c0c2c5;
+    /* border-bottom: 0.5px solid #c0c2c5; */
+  }
+  .form-group {
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .popup button {
+    margin-top: 10px;
+  }
+  
+  .popup h3 {
+    margin: 0;
+    /* font-size: medium; */
+  }
+  
+  .popup button {
+    margin-top: 10px;
+  }
+  .popup-btn{
+    border: none;
+    background-color: #212020;
+    color: #f2f2f2;
+  }
+  .delete-btn{
+    border: none;
+    background-color: #212020;
+    color: #f2f2f2; 
+  }
+  .edit-btn{
+    border: none;
+    background-color: white;
+  }
+  .add-btn{
+    border: none;
+    background-color: #212020;
+    color: #f2f2f2; 
+  }
+  .scrolling {
+    max-height: 90vh; /* Set the maximum height of the scrollable section */
+    overflow-y: auto; /* Add vertical scrolling if content overflows the container */
+  }
+  .save-btn {
+    margin-top: 100px;
+    border-top: 1px solid #c0c2c5;
+    display: flex;
+    justify-content: space-between;
+  }
+  .saveedit-btn{
+    margin-top: 20px;
+    border: none;
+    width: 40;
+    /* background-color: white; */
+  }
+  
+  /* img {
+    width: 130px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    border-block-color: #1a754a;
+    position: absolute;
+    
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  
+  } */
+  /* .popup-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  .update-popup button{
+    margin-top:110px ;
+    float: right;
+  }
+  .popup-content button{
+    /* margin-top:110px ; */
+    float: right;
+    margin-bottom: 20px;
+    /* border-bottom: 0.5px s#a11e41olid ; */
+    border: none;
+  }
+  /* .popup-content{
+    margin-top: 50px;
+  } */
+  .update-popup{  margin-top: 50px;}
+  .element {
+    height: 200px;
+    background: linear-gradient(75deg, #5279c6, #955976);
+  }
+  .profileImg{
+    border: 2px solid white;
+  }
+  .map {
+    border-bottom: 1px solid grey;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4px;
+    
+  }
+  .skillbtn {
+    margin-bottom: 6px;
+    margin-right: 5px;
+  }
+  
