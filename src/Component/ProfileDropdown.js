@@ -72,7 +72,7 @@ const ProfileDropdown = () => {
                   className="rounded-pill"
                   style={{ width: '52px', height:'52px'  }}
                 />                <div>
-                  <p>{userData.fullname}</p>
+                  <p>{userData.firstname} {userData.lastname}</p>
                   <p className='fw-100'>{userData.role}</p>
                 </div>
 

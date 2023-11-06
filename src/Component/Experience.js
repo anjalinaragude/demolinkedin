@@ -159,12 +159,12 @@ const Experience = () => {
                 <td>{item.company}</td>
                 <td>{item.years}</td>
                 <td>
-                  <button onClick={() => handleEdit(index, item)}>
+                  <button onClick={() => handleEdit(index, item)} className="btn">
                     edit
                   </button>
-                  <button onClick={() => handleCancel(index, item)}>
-                    X
-                  </button>
+                  <button onClick={() => handleEditCancel(index)} className="btn">
+                X
+              </button>
                 </td>
               </tr>
             ))}

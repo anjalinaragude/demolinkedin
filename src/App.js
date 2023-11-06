@@ -22,6 +22,7 @@ import Profile from './Component/Profile';
 import ProfileDropdown from './Component/ProfileDropdown'
 import { MyProvider } from './Component/Hook/MyProvider';
 import useProfile from './Component/Hook/useProfile';
+import Recent from './Component/Recent/Recent';
 
 function App() {
   const [showHome,setShowHome]=useState(false)
@@ -57,9 +58,8 @@ function App() {
           <Route path='/message' element={<Messaging/>}></Route>
           {/* <Route path='/job' element={<Job/>}></Route> */}
          <Route path='/profile' element={<Profile/>}></Route>
-         {/* <Route path='/experience' element={<ExperienceForm/>}></Route> */}
-        {/* <Route path='/experiencedetail' element={<ExperienceDetail/>}></Route> */}
-        {/* <Route path='/profile/profileedit' element={<ProfileEdit/>}></Route> */}
+         <Route path='/mynetwork' element={<Recent/>}></Route>
+        
            
           <Route path='/notification' element={<Notification/>}></Route>
       </Routes>

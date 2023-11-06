@@ -167,7 +167,7 @@
   .update-popup{  margin-top: 50px;}
   .element {
     height: 200px;
-    background: linear-gradient(75deg, #5279c6, #955976);
+    /* background: linear-gradient(75deg, #5279c6, #955976); */
   }
   .profileImg{
     border: 2px solid white;
