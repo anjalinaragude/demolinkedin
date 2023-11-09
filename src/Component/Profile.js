@@ -12,6 +12,7 @@ import Experience from './Experience';
 
 import Advertsement from './Advertisement/Advertsement';
 import About from './About/About';
+import Education from './Education/Education';
 
 const Profile = () => {
  
@@ -29,6 +30,8 @@ const Profile = () => {
               <div className="p-2 g-col-8 my-3  bg-white"><About /></div>
               <div className="p-2 g-col-4 my-3 bg-white"><Experience/></div>
               <div className="p-2 g-col-4 my-3 bg-white"><Skill/></div>
+              <div className="p-2 g-col-4 my-3 bg-white"><Education/></div>
+           
             </div>
           </div>
           <div className='col-md-3 '>

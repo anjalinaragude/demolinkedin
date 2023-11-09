@@ -53,16 +53,16 @@ const ProfilePhoto = () => {
             {img ? (
               <img
                 src={URL.createObjectURL(img)}
-                className="profileImg"
-                width={24}
-                height={24}
+                className="profileImg rounded-pill"
+                width={44}
+                height={44}
               />
             ) : (
               <img
                 src="img/profile2.jpg"
-                className="profileImg"
-                width={24}
-                height={24}
+                className="profileImg rounded-pill"
+                width={44}
+                height={44}
               />
             )}
           </div>
@@ -93,9 +93,9 @@ const ProfilePhoto = () => {
             {img ? (
               <img
                 src={URL.createObjectURL(img)}
-                className="profileImg"
-                width={24}
-                height={24}
+                className="profileImg rounded-pill"
+               width={44}
+                height={44}
               
                 
                 
@@ -103,10 +103,10 @@ const ProfilePhoto = () => {
             ) : (
               <img
                 src="img/profile2.jpg"
-                className="profileImg"
+                className="profileImg rounded-pill"
                 
-                width={24}
-                height={24}
+                width={44}
+                height={44}
               
               />
             )}

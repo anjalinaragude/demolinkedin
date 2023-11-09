@@ -67,3 +67,18 @@
     background-color: #212020;
     color: #f2f2f2; 
   }
+  profileImg{
+    width: 130px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    border-block-color: #1a754a;
+    position: absolute;
+    
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  
+  }
