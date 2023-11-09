@@ -1,20 +1,20 @@
 // src/components/Profile.js
-import React, { useContext, useState } from 'react';
+
 
 // import ProfileEdit from './ProfileEditComponent/ProfileEdit';
 import ProfilePhoto from './ProfilePhoto';
-import Skills from './Skills';
+
 import{FiEdit2} from 'react-icons/fi'
 
 import Skill from './Skill/Skill';
 
 import Experience from './Experience';
-import { MyProvider } from './Hook/MyProvider';
+
 import Advertsement from './Advertisement/Advertsement';
+import About from './About/About';
 
 const Profile = () => {
-  const userData = useContext(MyProvider)
-  console.log(userData)
+ 
   return (
     <div>
 
@@ -26,7 +26,7 @@ const Profile = () => {
           <div className='col-md-9  '>
             <div className="grid gap-0 column-gap-5 ">
               <div className="p-2 g-col-8 my-3  bg-white"><ProfilePhoto /></div>
-
+              <div className="p-2 g-col-8 my-3  bg-white"><About /></div>
               <div className="p-2 g-col-4 my-3 bg-white"><Experience/></div>
               <div className="p-2 g-col-4 my-3 bg-white"><Skill/></div>
             </div>

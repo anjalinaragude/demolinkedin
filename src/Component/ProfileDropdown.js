@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProfilePhoto from './ProfilePhoto';
-import { MyProvider } from './Hook/MyProvider';
+
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,11 +47,11 @@ const ProfileDropdown = () => {
     localStorage.removeItem('signin');
     localStorage.removeItem("email")
     localStorage.removeItem("password")
-    window.location.reload("/signin");
+    window.location.reload("/");
     // You may also want to redirect the user to the login page or perform other actions after logout.
   };
-  const userData = useContext(MyProvider)
-  console.log(userData)
+  
+  
 
   return (
     <div className="profile-dropdown py-4px">
@@ -67,13 +67,13 @@ const ProfileDropdown = () => {
             <div style={columnStyle}>
  <div className='d-flex justify-content-around align-items-center'>
                 <img
-                  src={userData.img}
+                  src="img/profile2.jpg"
                   alt="User Avatar"
                   className="rounded-pill"
                   style={{ width: '52px', height:'52px'  }}
                 />                <div>
-                  <p>{userData.firstname} {userData.lastname}</p>
-                  <p className='fw-100'>{userData.role}</p>
+                  <p>Anjali Reddy</p>
+                  <p className='fw-100'>software Engineer</p>
                 </div>
 
               </div>             
@@ -87,7 +87,7 @@ const ProfileDropdown = () => {
               <Link to="/settings">Settings</Link>
               <hr />
               <div>
-              <Link to="/signin"><button onClick={handleLogout} style={{ border: "none", backgroundColor: "white" }}>Logout</button>  </Link>          </div>
+            <button onClick={handleLogout} style={{ border: "none", backgroundColor: "white" }}>  <Link to="/signin">Logout</Link> </button>           </div>
           </div>
           </div>
         )}

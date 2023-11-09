@@ -1,20 +1,37 @@
-import React, { useContext } from 'react';
-import { MyProvider } from '../Hook/MyProvider';
+
 import { GrNotes } from "react-icons/gr";
 import { MdPermMedia } from "react-icons/md";
 import { BsCalendarEvent } from "react-icons/bs";
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const SearchPost = () => {
-    const userData = useContext(MyProvider);
+  
+  const img = useSelector((state) => state.profilePhoto.img);
+
   return (
     <div>
-       <div className="ProfileImg  d-flex align-items-center">
+       <div className="ProfileImg  d-flex align-items-center p-2">
+       
+                <Link to="/profile">
+                  {img ? (
                     <img
-                      src={userData.img}
+                      src={URL.createObjectURL(img)}
                       alt=""
                       width={80}
                       height={80}
-                      className="rounded-pill p-2"
+                      className="profile1Img rounded-pill"
                     />
+                  ) : (
+                    <img
+                      src="img/profile2.jpg"
+                      alt=""
+                      width={80}
+                      height={80}
+                      className="profile1Img rounded-pill"
+                    />
+                  )}
+                </Link>
+              
 
                     <div className="inputProfile">
                       <input

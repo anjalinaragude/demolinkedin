@@ -1,0 +1,20 @@
+.education{
+    border-bottom: 1px solid grey;
+    margin: 4px;
+    width: 100%;
+   }
+/* .map {
+    border-bottom: 1px solid grey;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4px;
+    
+  } */
+  experiencebtn{
+    cursor: pointer;
+    color: #0077b5;
+  }
+  .expelabel{
+    color: rgba(0, 0, 0, 0.89);
+  }

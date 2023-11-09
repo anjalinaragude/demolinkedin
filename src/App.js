@@ -20,9 +20,12 @@ import Notification from './Component/Notification';
 import Messaging from './Component/Messaging';
 import Profile from './Component/Profile';
 import ProfileDropdown from './Component/ProfileDropdown'
-import { MyProvider } from './Component/Hook/MyProvider';
-import useProfile from './Component/Hook/useProfile';
+
 import Recent from './Component/Recent/Recent';
+import SearchPost from './Component/SearchPost/SearchPost';
+import LoginForm from './Component/Auth/Login/LoginForm';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   const [showHome,setShowHome]=useState(false)
@@ -35,11 +38,11 @@ function App() {
   
     },[localSignUp])
 
-    const {userData,setUserData}=useProfile()
+    
   return (
     <div className="">
-      <MyProvider.Provider  value={userData} >
-
+      
+<Provider store={store}>
      
       <LayoutComponent >
 
@@ -52,6 +55,7 @@ function App() {
           <Route path="/signin" element={<SignIn/>} />
           <Route path="/learning" element={<Learning/>} />
           
+          <Route path="/login" element={<LoginForm/>} />
           <Route path="/home" element={<Home/>} />
           <Route path='/' element={<Home/>}></Route>
           <Route path='/mynetwork' element={<MyNetwork/>}></Route>
@@ -60,7 +64,7 @@ function App() {
          <Route path='/profile' element={<Profile/>}></Route>
          <Route path='/mynetwork' element={<Recent/>}></Route>
         
-           
+         <Route path='/profile' element={<SearchPost/>}></Route>
           <Route path='/notification' element={<Notification/>}></Route>
       </Routes>
     </div>:<SignIn/>}
@@ -68,7 +72,8 @@ function App() {
     	</Router>
       </LayoutComponent>
       <FooterComponent/>
-      </MyProvider.Provider>
+      </Provider>
+    
     </div>
   );
 }

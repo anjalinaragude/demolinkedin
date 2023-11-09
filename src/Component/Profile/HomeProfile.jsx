@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
-import { MyProvider } from '../Hook/MyProvider';
+import { useSelector } from "react-redux";
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import "../Home/Home.css";
 const HomeProfile = () => {
-    const userData = useContext(MyProvider);
+  const img = useSelector((state) => state.profilePhoto.img);
+
   return (
     <div>
        <div className="card " style={{ width: "11rem" }}>
@@ -21,23 +22,32 @@ const HomeProfile = () => {
                       />
                     </div>
                     <div className="proImg">
-                      <Link to="/profile">
-                        {" "}
-                        <img
-                          src={userData.img}
-                          alt=""
-                          width={70}
-                          height={70}
-                          className="profile1Img rounded-pill"
-                        />
-                      </Link>
-                    </div>
+                <Link to="/profile">
+                  {img ? (
+                    <img
+                      src={URL.createObjectURL(img)}
+                      alt=""
+                      width={70}
+                      height={70}
+                      className="profile1Img rounded-pill"
+                    />
+                  ) : (
+                    <img
+                      src="img/profile2.jpg"
+                      alt=""
+                      width={70}
+                      height={70}
+                      className="profile1Img rounded-pill"
+                    />
+                  )}
+                </Link>
+              </div>
                   </div>
                   <div className="desc my-3">
-                    <span className=" postUserName">{userData.fullname}</span>
+                    <span className=" postUserName">Anjali Reddy</span>
                     <span className="postDesc fs-6 fw-light">
                       {" "}
-                      {userData.role}
+                      Software engineer
                     </span>
                   </div>
                   <hr style={{ width: "100%" }}></hr>

@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import { MyProvider } from '../Hook/MyProvider';
+
 
 const Advertsement = () => {
-    const userData = useContext(MyProvider);
+    
   return (
     <div>
        <div className="my-2 bg-white">
@@ -16,7 +15,7 @@ const Advertsement = () => {
               </div>
               <div className="d-flex align-items-center">
                 <img
-                  src={userData.img}
+                  src="img/profile2.jpg"
                   width={50}
                   height={50}
                   alt=""
