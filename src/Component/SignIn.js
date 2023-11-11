@@ -10,9 +10,9 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const   {isLoggedIn} = useSelector((s)=>s.user)
-  const [allUser, setAllUser] = useState([])
-   
+  const { isLoggedIn } = useSelector((s) => s.user);
+  const [allUser, setAllUser] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -22,77 +22,82 @@ const SignIn = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    const selectedUser = allUser.find((item)=>item?.email === email)
-    if(selectedUser && selectedUser?.password===password) {
-      localStorage.setItem("signin", JSON.stringify(selectedUser))
-      dispatch(setLoginData(selectedUser))
-      alert("Successfully logged in");
-      navigate("/home");
+    const selectedUser = allUser.find((item) => item?.email === email);
+    if (selectedUser && selectedUser?.password === password) {
+      setIsLoading(true);
+      setTimeout(() => {
+        localStorage.setItem("signin", JSON.stringify(selectedUser));
+        dispatch(setLoginData(selectedUser));
+        alert("Successfully logged in");
+        navigate("/home");
+      }, 1000);
     } else {
-      setError("Invalid Credential !")
+      setError("Invalid Credential !");
     }
   };
 
-  useEffect(()=>{
-    const data = Users
-    setAllUser(data)
-  },[])
+  useEffect(() => {
+    const data = Users;
+    setAllUser(data);
+  }, []);
+
+  const cover_img = {
+    background:
+      "url(https://media.licdn.com/media//AAYQAgSrAAgAAQAAAAAAAF28luld64NDRCi0l6N4Bki57w.png)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "auto",
+  };
 
   return (
     <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 pt-5">
-              <h1 className="heading">
-                Welcome to Your Professional community
-              </h1>
-              {/* <label>Name</label>
-              <br />
-              <input
-                type="text"
-                className="form-control"
-                style={{ width: "400px" }}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              /> */}
-              <br />
-              <h6 className="text-danger py-2" >{error}</h6>
-              <label>Email or phone</label>
-              <br />
-              <input
-                type="email"
-                className="form-control"
-                style={{ width: "400px" }}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <br />
-              <br />
-              <label>Password</label>
-              <br />
-              <input
-                type="password"
-                className="form-control"
-                style={{ width: "400px" }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <br />
-              <br />
-              <Link to="/home">
-                {" "}
-                <button
-                  type="submit"
-                  className="btn btn-primary rounded-pill"
-                  style={{ width: "400px" }}
-                  onClick={handleSignIn}
-                >
-                  Sign In
-                </button>
-              </Link>
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-5 pt-5 ">
+            <h1 className="heading">Welcome to Your Professional community</h1>
+
+            <br />
+           {error && <div class="alert alert-danger" role="alert">
+              {error}
+            </div> } 
+            <label>Email or phone</label>
+            <br />
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <br />
+            <label>Password</label>
+            <br />
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <br />
+            <Link to="/home">
+              {" "}
+              <button
+                type="submit"
+                className="btn btn-primary rounded-pill"
+                style={{ width: "100%" }}
+                onClick={handleSignIn}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="spinner-border text-dark" role="status"></div>
+                ) : (
+                  "Sign In"
+                )}
+              </button>
+            </Link>
           </div>
         </div>
+      </div>
     </div>
   );
 };
