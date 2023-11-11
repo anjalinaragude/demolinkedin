@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProfilePhoto from './ProfilePhoto';
-
+import { useSelector } from 'react-redux';
 
 const ProfileDropdown = () => {
+  const img = useSelector((state) => state.profilePhoto.img);
+
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -40,9 +42,9 @@ const ProfileDropdown = () => {
   const localSignUp = localStorage.getItem("signin") === 'true'
 
   const handleLogout = () => {
-    
-    
-      navigate("/signin");
+
+
+    navigate("/signin");
 
     localStorage.removeItem('signin');
     localStorage.removeItem("email")
@@ -50,8 +52,8 @@ const ProfileDropdown = () => {
     window.location.reload("/");
     // You may also want to redirect the user to the login page or perform other actions after logout.
   };
-  
-  
+
+
 
   return (
     <div className="profile-dropdown py-4px">
@@ -65,18 +67,36 @@ const ProfileDropdown = () => {
         {isOpen && (
           <div style={contentStyle} className="profile-dropdown-content">
             <div style={columnStyle}>
- <div className='d-flex justify-content-around align-items-center'>
-                <img
+              <div className='d-flex justify-content-around align-items-center'>
+                {/* <img
                   src="img/profile2.jpg"
                   alt="User Avatar"
                   className="rounded-pill"
-                  style={{ width: '52px', height:'52px'  }}
-                />                <div>
+                  style={{ width: '52px', height: '52px' }}
+                /> */}
+                {img ? (
+                    <img
+                      src={URL.createObjectURL(img)}
+                      alt=""
+                      width={52}
+                      height={52}
+                      className="profile1Img rounded-pill"
+                    />
+                  ) : (
+                    <img
+                      src="img/profile2.jpg"
+                      alt=""
+                      width={80}
+                      height={80}
+                      className="profile1Img rounded-pill"
+                    />
+                  )}
+                <div>
                   <p>Anjali Reddy</p>
                   <p className='fw-100'>software Engineer</p>
                 </div>
 
-              </div>             
+              </div>
               {/* <div>
                 <ProfilePhoto/>
               </div> */}
@@ -87,8 +107,8 @@ const ProfileDropdown = () => {
               <Link to="/settings">Settings</Link>
               <hr />
               <div>
-            <button onClick={handleLogout} style={{ border: "none", backgroundColor: "white" }}>  <Link to="/signin">Logout</Link> </button>           </div>
-          </div>
+                <button onClick={handleLogout} style={{ border: "none", backgroundColor: "white" }}>  <Link to="/signin">Logout</Link> </button>           </div>
+            </div>
           </div>
         )}
       </div>

@@ -26,25 +26,12 @@ function Home() {
                 <div className="col-md-12 bg-white rounded-4 ">
                   <SearchPost />
                 </div>
-                <hr className="m-3" />
-                <div className="col-md-12 bg-white rounded-4 ">
-                  <div>
-                    <span className="">Recommanded for you </span>
-                    <Recommanded />
-
-                    <hr />
-                    <Recommanded />
-                  </div>
-                </div>
-
+                <hr className="m-3" /> 
                 <div className="col-md-12 bg-white rounded-4 my-2">
                   <div>
                     <div className="feed">
                       <div className="feedWrapper">
-                        {/* <Share/> */}
-                        {Posts.map((p) => (
-                          <Post key={p.id} post={p} />
-                        ))}
+                        <Post/>
                       </div>
                     </div>
                   </div>

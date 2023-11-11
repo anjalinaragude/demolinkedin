@@ -2,43 +2,81 @@
 import { GrNotes } from "react-icons/gr";
 import { MdPermMedia } from "react-icons/md";
 import { BsCalendarEvent } from "react-icons/bs";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import "../SearchPost/SearchPost.css";
+import { useState } from "react";
+import { addPost } from '../../store/slices/postSlice';
 const SearchPost = () => {
   
   const img = useSelector((state) => state.profilePhoto.img);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [postContent, setPostContent] = useState('');
+  const [postImage, setPostImage] = useState(null);
+  const [postVideo, setPostVideo] = useState(null);
 
+  const handlePost = () => {
+    
+    dispatch(addPost({ desc: postContent,video:postVideo, 
+      image: postImage, date: new Date(), like: 0,
+       comment: 0, userProfilePicture: "img/profile2.jpg", 
+    username: "Anjali redd" }));
+    setPopupOpen(false);
+    setPostContent('');
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setPostImage(file);
+  
+  };
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    setPostVideo(file);
+  };
+  
   return (
     <div>
        <div className="ProfileImg  d-flex align-items-center p-2">
        
-                <Link to="/profile">
-                  {img ? (
-                    <img
-                      src={URL.createObjectURL(img)}
-                      alt=""
-                      width={80}
-                      height={80}
-                      className="profile1Img rounded-pill"
-                    />
-                  ) : (
-                    <img
-                      src="img/profile2.jpg"
-                      alt=""
-                      width={80}
-                      height={80}
-                      className="profile1Img rounded-pill"
-                    />
-                  )}
+       <Link to="/profile">
+           <img
+          src={img ? URL.createObjectURL(img) : "img/profile2.jpg"}
+          alt="Profile"
+          className="profile1Img rounded-pill"
+          width={54}
+          height={54}
+        />
                 </Link>
-              
-
                     <div className="inputProfile">
                       <input
                         type="text"
                         className="inputpost rounded-pill"
                         placeholder=" Start a post"
+                        onClick={()=>setPopupOpen(!isPopupOpen)}
                       />
+
+{isPopupOpen && (
+        <div className="search-popup">
+           <button onClick={()=>setPopupOpen(!isPopupOpen)}>Close Popup</button>
+  
+         <div> 
+          <textarea onChange={(e) => setPostContent(e.target.value)}
+ className="search-title" placeholder="What do you want to talk about?"/>
+          </div>
+          <div>
+              <input type="file" accept="image/*" onChange={handleImageChange} />
+            </div>
+            <div>
+                <input type="file" accept="video/*" onChange={handleVideoChange} />
+              </div>
+          <div>
+          <button onClick={handlePost}>post</button>
+   
+          </div>
+               </div>
+        
+      )}
                     </div>
                   </div>
                   <div className="d-flex justify-content-around">

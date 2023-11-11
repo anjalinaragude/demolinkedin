@@ -15,7 +15,27 @@
     margin-left: 50px;
     object-fit:  cover;
 }
+.profileImg2{
+  position: absolute;
+  margin-top: -140px;
+  margin-left: 50px;
+  object-fit:  cover;
+}
 .popup2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(33, 33, 33, 0.2);
+    width: 30%;
+    height: 60vh;
+    background-color: #212020;
+    color: white;
+  }
+  .popup3 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -26,15 +46,23 @@
     box-shadow: 0 2px 4px rgba(33, 33, 33, 0.2);
     width: 70%;
     height: 70vh;
-    background-color: #212020;
-    color: white;
+    background-color: white;
+    color:black;
   }
-  .popup-content2 {
+
+  .popup-content3 {
     /* display: flex;
     justify-content: space-between; */
-    margin-bottom: 20px;
-    border-bottom: 0.5px solid #16407e;
+    margin-bottom: 30px;
+    /* border-bottom: 0.5px solid #16407e; */
     /* border-bottom: 0.5px solid #c0c2c5; */
+  }
+  .popup-content2 {
+    
+  
+    margin-bottom: 20px;
+    /* border-bottom: 0.5px solid #16407e; */
+  
   }
   .popup2 button {
     margin-top: 10px;
@@ -45,9 +73,7 @@
     /* font-size: medium; */
   }
   
-  .popup2 button {
-    margin-top: 10px;
-  }
+  
   .popup-btn{
     border: none;
     background-color: #212020;
@@ -67,7 +93,7 @@
     background-color: #212020;
     color: #f2f2f2; 
   }
-  profileImg{
+  .profileImg{
     width: 130px;
     height: 110px;
     border-radius: 50%;
@@ -82,3 +108,26 @@
     transform: translate(-50%, -50%);
   
   }
+.popup-profile-image{
+  margin-top: -60px;
+margin-left: 40px;
+width: 100px;
+height: 100px;
+object-fit: cover;
+border-top: 2px solid black; 
+  border-bottom: 2px solid black;   
+  border-radius: 50%;
+}
+.edit-profile-image{
+  margin-bottom: 150px;
+} 
+.edit-profile-img-btn {
+  background-color: #ccc;
+}
+.edit-profile-img-btn:hover{
+  background-color: rgb(68, 80, 162); 
+  color: white ; 
+  border-color: white;
+} 
+  
+

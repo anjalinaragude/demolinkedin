@@ -1,43 +1,82 @@
+// Post.js
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPosts, addLike, removeLike } from '../../store/slices/postSlice';
 import '../Post/Post.css';
-import {FiMoreVertical} from 'react-icons/fi';
-import {Users} from '../../Data'
-const Post = ({post}) => {
- 
+
+const Post = () => {
+    const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+  const handleLikeClick = (postId) => {
+    // Check if the post is already liked or not
+    const isLiked = posts.find((post) => post.date === postId)?.isLiked || false;
+
+    // Dispatch the appropriate action
+    if (isLiked) {
+      dispatch(removeLike({ postId }));
+    } else {
+      dispatch(addLike({ postId }));
+    }
+  };
+
 
   return (
-    <div className='post'>
-         <div className="postWrapper">
-
+    <div>
+      {posts.map((post) => (
+        <div key={post.date} className='post'>
+          <div className="postWrapper">
             <div className="postTop">
-                <div className="postTopLeft">
-                   
-                    <img src={Users.filter((u)=> u.id===post.userId)[0].profilePicture} alt="" className="postProfileImg" />
-                    <span className="postUserName">{Users.filter((u)=> u.id===post.userId)[0].username}</span>
-                    <span className="postDate">{post.date}</span>
-                </div>
-                <div className="postTopRight">
-                   <FiMoreVertical/> 
-                </div>
+              <div className="postTopLeft">
+                <img src={post.userProfilePicture} alt="" className="postProfileImg" />
+                <span className="postUserName">{post.username}</span>
+                <span className="postDate">{post.date.toLocaleString()}</span>
+              </div>
+              <div className="postTopRight"> {/* Add your additional components here */}</div>
             </div>
-            
+
             <div className="postCenter">
-                <span className="postText">{post?.desc}</span>
-                 <img src="/img/post.jpg" alt="" className="postImg" />
-            </div>
+              <span className="postText">{post.desc}</span>
+              {post.image && (
+  <img
+    src={post.image instanceof Blob ? URL.createObjectURL(post.image) : post.image}
+    alt=""
+    className="postImg"
+    onLoad={() => console.log('Image loaded successfully')}
+    onError={() => console.log('Error loading image')}
+  />
+)}
+
+{post.video && (
+  <video controls className="postVideo" width="100%" height="auto">
+    <source src={post.video instanceof Blob ? URL.createObjectURL(post.video) : post.video} type="video/mp4" />
+  </video>
+)}
+ </div>
+
             <div className="postBottom">
-                <div className="postBottomLeft">
-                    <img src="/img/like.png" alt="" className="likeIcon" />
-                <img src="/img/likebutton.png" alt="" className="likeIcon" />
-                <span className="postLikeCounter">{post?.like}</span>
-                </div>
-                <div className="postBottomright">
-                    <span className="postCommentText">{post?.comment}</span>
-                </div>
+              <div className="postBottomLeft">
+              <img
+              src="/img/like.png"
+              alt=""
+              className="likeIcon"
+              onClick={() => handleLikeClick(post.date)}
+            />
+            <img
+              src="/img/likebutton.png"
+              alt=""
+              className="likeIcon"
+              onClick={() => handleLikeClick(post.date)}
+            />
+            <span className="postLikeCounter">{post.like}</span> </div>
+              <div className="postBottomright">
+                <span className="postCommentText">{post.comment}</span>
+              </div>
             </div>
-         </div>
-      
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default Post;
