@@ -11,32 +11,21 @@ import Recent from "../Recent/Recent";
 import HomeProfile from "../Profile/HomeProfile";
 // import { useSelector } from "react-redux";
 function Home() {
-
   return (
     <div>
       <div className="container">
         <div className="row mt-3 ">
-          <div className="col-md-2  col-lg-2   ">
+          <div className="col-12 col-md-2  col-lg-2   ">
             <HomeProfile />
             <Recent />
           </div>
-          <div className="col-md-6 col-lg-6  mx-2">
-            <div className="">
-              <div className="row ">
-                <div className="col-md-12 bg-white rounded-4 ">
-                  <SearchPost />
-                </div>
-                <hr className="m-3" /> 
-                <div className="col-md-12 bg-white rounded-4 my-2">
-                  <div>
-                    <div className="feed">
-                      <div className="feedWrapper">
-                        <Post/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="col-md-6 col-lg-6">
+            <div className="bg-white rounded-3 my-1 ">
+              <SearchPost />
+            </div>
+
+            <div className="bg-white">
+              <Post />
             </div>
           </div>
           <div className="col-md-3 col-lg-3 ">

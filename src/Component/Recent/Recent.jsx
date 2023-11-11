@@ -12,7 +12,7 @@ const Recent = () => {
     };
   return (
     <div>
-      <div class="card mt-2" style={{ width: "11rem" }}>
+      <div class="card mt-2" >
               <div className="card-body">
                 <div className="dropdown">
                   <div className="d-flex justify-content-between">

@@ -1,106 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { TbSquareLetterI } from "react-icons/tb";
 
 const LinkedinNew = () => {
-    const [showMore, setShowMore] = useState(false);
+  const [count, setCount] = useState(2)
+  const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
+  const newsData = [
+    {
+      id: 1,
+      title: "Hydrabad placements here to stay",
+      description: "1 day ago .771 readers",
+    },
+    {
+      id: 2,
+      title: "Finance Seeks fresh talent",
+      description: " 3 day ago .451 readers",
+    },
+    {
+      id: 3,
+      title: "Hydrabad placements here to stay",
+      description: "1 day ago .771 readers",
+    },
+    {
+      id: 4,
+      title: "Hydrabad placements here to stay",
+      description: "1 day ago .771 readers",
+    },
+  ];
+
   return (
-    <div>
-       <div className="bg-white">
-              <div className=" d-flex justify-content-around align-items-center">
-                <span className="span">
-                  <b>Linkedin News</b>
-                </span>
-                <TbSquareLetterI />
-              </div>
-              <ul>
-                {showMore?(
-                <div><li className="d-flex flex-coloum">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Finance Seeks fresh talent </b>
-                  </span>
-                  <span className=""> 3 day ago .451 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li></div>
-                ):(
-                <div> <li className="d-flex flex-coloum">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Finance Seeks fresh talent </b>
-                  </span>
-                  <span className=""> 3 day ago .451 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="d-flex flex-coloum">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Finance Seeks fresh talent </b>
-                  </span>
-                  <span className=""> 3 day ago .451 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                <li className="">
-                  <span>
-                    <b> Hydrabad placements here to stay </b>
-                  </span>
-                  <span className=""> 1 day ago .771 readers</span>
-                </li>
-                </div>)}
-               
-              </ul>
-              <div className="p-1 px-3">
-                <button className="border-0 " onClick={toggleShowMore}> {showMore ? "Show less" : "Show more"}</button>
-              </div>
+    <div className="bg-white">
+      <div className="d-flex justify-content-between align-items-center p-2">
+        <span className="span">
+          <b>Linkedin News</b>
+        </span>
+        <TbSquareLetterI />
+      </div>
+      <ul>
+        {newsData?.slice(0,count).map((item) => (
+          <li>
+            <div>
+              <h6>{item?.title}</h6>
+              <span>{item?.description}</span>
             </div>
+          </li>
+        ))}
+      </ul>
+      <div className="p-1 px-3">
+        <button className="border-0 " onClick={()=>{
+          setShowMore(!showMore)
+          if(count < newsData?.length){
+            setCount(newsData?.length)
+          } else{
+            setCount(2)
+          }
+        }}>
+          {" "}
+          {showMore ? "Show less" : "Show more"}
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default LinkedinNew;
