@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProfilePhoto from './ProfilePhoto';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/slices/userSlice';
 
 const ProfileDropdown = () => {
   const img = useSelector((state) => state.profilePhoto.img);
+  const   {userData} = useSelector((s)=>s.user)
+
+  const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -39,17 +43,14 @@ const ProfileDropdown = () => {
     flexDirection: 'column',
 
   };
-  const localSignUp = localStorage.getItem("signin") === 'true'
 
   const handleLogout = () => {
-
-
     navigate("/signin");
-
-    localStorage.removeItem('signin');
-    localStorage.removeItem("email")
-    localStorage.removeItem("password")
-    window.location.reload("/");
+    dispatch(logout())
+    // localStorage.removeItem('signin');
+    // localStorage.removeItem("email")
+    // localStorage.removeItem("password")
+    // window.location.reload("/");
     // You may also want to redirect the user to the login page or perform other actions after logout.
   };
 
@@ -84,7 +85,7 @@ const ProfileDropdown = () => {
                     />
                   ) : (
                     <img
-                      src="img/profile2.jpg"
+                      src={userData?.profilePicture}
                       alt=""
                       width={80}
                       height={80}
@@ -92,8 +93,8 @@ const ProfileDropdown = () => {
                     />
                   )}
                 <div>
-                  <p>Anjali Reddy</p>
-                  <p className='fw-100'>software Engineer</p>
+                  <p>{userData?.username}</p>
+                  <p className='fw-100'>{userData?.role}</p>
                 </div>
 
               </div>

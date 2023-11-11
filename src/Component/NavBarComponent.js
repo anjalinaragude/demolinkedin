@@ -3,22 +3,13 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ProfileDropdown from "./ProfileDropdown";
+import { useSelector } from "react-redux";
 
 
 const NavBarComponent = () => {
-    const localSignUp = localStorage.getItem("signin")
-    const search = {
-        padding: "12px",
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: "#feef3f8",
-        height: "30px",
-        color: "gray",
-
-        borderRadius: "5px"
-
-
-    }
+    const img = useSelector((state) => state.profilePhoto.img);
+    const {userData} = useSelector((s)=>s.user)
+    
     return (
         <div className="bg-white">
             <div className="container ">
@@ -87,7 +78,7 @@ const NavBarComponent = () => {
 
                                 <Link to="/notification" className="text-decoration-none">Notification</Link> </div>
                             <div className="d-flex flex-column">
-                                <img src="img/profile2.jpg" className="rounded-pill" width={24} height={24} />
+                                <img src={img ? URL.createObjectURL(img) : userData?.profilePicture || "img/profile2.jpg"} className="rounded-pill" width={24} height={24} />
                                 <ProfileDropdown />
                             </div>
 

@@ -5,6 +5,7 @@ import { BsFillBookmarkFill } from 'react-icons/bs';
 import "../Home/Home.css";
 const HomeProfile = () => {
   const img = useSelector((state) => state.profilePhoto.img);
+  const   {userData} = useSelector((s)=>s.user)
 
   return (
     <div>
@@ -33,7 +34,7 @@ const HomeProfile = () => {
                     />
                   ) : (
                     <img
-                      src="img/profile2.jpg"
+                      src={userData?.profilePicture}
                       alt=""
                       width={70}
                       height={70}
@@ -44,10 +45,9 @@ const HomeProfile = () => {
               </div>
                   </div>
                   <div className="desc my-3">
-                    <span className=" postUserName">Anjali Reddy</span>
+                    <span className=" postUserName">{userData?.username}</span>
                     <span className="postDesc fs-6 fw-light">
-                      {" "}
-                      Software engineer
+                      {userData?.role}
                     </span>
                   </div>
                   <hr style={{ width: "100%" }}></hr>

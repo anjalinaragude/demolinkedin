@@ -1,48 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Home from "./Home/Home";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginData } from "../store/slices/userSlice";
+import { Users } from "../Data";
 
 const SignIn = () => {
-  const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showHome, setShowHome] = useState(false);
-  const localSignUp = localStorage.getItem("signin");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const   {isLoggedIn} = useSelector((s)=>s.user)
+  const [allUser, setAllUser] = useState([])
+   
 
   useEffect(() => {
-    if (localSignUp) {
-      setShowHome(true);
+    if (isLoggedIn) {
+      navigate("/home");
     }
-  }, [localSignUp]);
+  }, [isLoggedIn]);
 
   const handleSignIn = (e) => {
     e.preventDefault();
-
-    if (email && password && name) {
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-      localStorage.setItem("signin", email);
+    const selectedUser = allUser.find((item)=>item?.email === email)
+    if(selectedUser && selectedUser?.password===password) {
+      localStorage.setItem("signin", JSON.stringify(selectedUser))
+      dispatch(setLoginData(selectedUser))
       alert("Successfully logged in");
-      window.location.reload("/");
-      // Remove the window reload and navigate directly
       navigate("/home");
+    } else {
+      setError("Invalid Credential !")
     }
   };
 
+  useEffect(()=>{
+    const data = Users
+    setAllUser(data)
+  },[])
+
   return (
     <div>
-      {showHome ? (
-        <Home />
-      ) : (
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-6 pt-5">
               <h1 className="heading">
                 Welcome to Your Professional community
               </h1>
-              <label>Name</label>
+              {/* <label>Name</label>
               <br />
               <input
                 type="text"
@@ -50,9 +54,9 @@ const SignIn = () => {
                 style={{ width: "400px" }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              />
+              /> */}
               <br />
-              <br />
+              <h6 className="text-danger py-2" >{error}</h6>
               <label>Email or phone</label>
               <br />
               <input
@@ -89,7 +93,6 @@ const SignIn = () => {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 };

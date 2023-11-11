@@ -5,6 +5,7 @@ import aboutReducer from "../store/slices/aboutSlice";
 import profilePhotoReducer from "../store/slices/imageSlice";
 import  educationReducer from '../store/slices/educationSlice';
  import postReducer from "../store/slices/postSlice";
+import userSlice from './slices/userSlice';
 const store = configureStore({
   reducer: {
     skills: skillReducer,
@@ -12,8 +13,8 @@ const store = configureStore({
     about: aboutReducer,
     profilePhoto: profilePhotoReducer,
     educations: educationReducer,
-    post: postReducer
-  
+    post: postReducer,
+    user : userSlice
   },
 });
 

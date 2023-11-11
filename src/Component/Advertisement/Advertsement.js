@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 
 
 const Advertsement = () => {
-    
+  const img = useSelector((state) => state.profilePhoto.img);
+  const {userData} = useSelector(s=>s.user)
   return (
     <div>
        <div className="my-2 bg-white">
@@ -15,7 +17,7 @@ const Advertsement = () => {
               </div>
               <div className="d-flex align-items-center">
                 <img
-                  src="img/profile2.jpg"
+                  src={img? URL.createObjectURL(img) : userData?.profilePicture || "img/profile2.jpg"}
                   width={50}
                   height={50}
                   alt=""

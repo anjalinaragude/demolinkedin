@@ -7,6 +7,7 @@ import "../Component/Profile/ProfilePhoto.css";
 const ProfilePhoto = () => {
   const dispatch = useDispatch();
   const img = useSelector((state) => state.profilePhoto.img);
+  const {userData} = useSelector(s=>s.user)
   const backgroundImg = useSelector((state) => state.profilePhoto.backgroundImg);
   const [isOpen, setIsOpen] = useState(false);
   const reff = useRef();
@@ -67,7 +68,7 @@ const ProfilePhoto = () => {
 
       <div onClick={togglePopup}>
         <img
-          src={img ? URL.createObjectURL(img) : "img/profile2.jpg"}
+          src={img ? URL.createObjectURL(img) : userData?.profilePicture ||  "img/profile2.jpg"}
           alt="Profile"
           className="popup-profile-image"
           width={54}
@@ -84,7 +85,7 @@ const ProfilePhoto = () => {
          
             </div>
             <img
-              src={img ? URL.createObjectURL(img) : "img/profile2.jpg"}
+              src={img ? URL.createObjectURL(img) : userData?.profilePicture || "img/profile2.jpg"}
               alt="Profile"
               className="popup-profile-image"
               width={42}
