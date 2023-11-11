@@ -6,7 +6,7 @@ const Advertsement = () => {
   const {userData} = useSelector(s=>s.user)
   return (
     <div>
-       <div className="my-2 bg-white">
+       <div className="my-2 bg-white p-2">
               <div className="s">
                 <div className="text-end">Ad ...</div>
               </div>
@@ -36,9 +36,11 @@ const Advertsement = () => {
                   See who's viewed your profile in the last 90 days
                 </span>
               </div>
-              <button className="bg-white border-primary rounded-pill p-1 ms-5 mb-3 mt-2">
+              <div className="text-center" >
+              <button className="bg-white border-primary rounded-pill px-3 py-2 text-center ">
                 try for free!
               </button>
+              </div>
             </div> 
     </div>
   );
