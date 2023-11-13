@@ -19,7 +19,7 @@ import Notification from "./Router/Notification";
 const LayoutComponent=()=>{
   const localSignUp = localStorage.getItem("signin");
   const dispatch = useDispatch();
-  const userData = JSON.parse(localSignUp)
+  const userData = JSON?.parse(localSignUp)
  const   { isLoggedIn} = useSelector((s)=>s.user)
 
   useEffect(()=>{
