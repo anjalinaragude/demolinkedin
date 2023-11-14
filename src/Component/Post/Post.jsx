@@ -7,6 +7,9 @@ import '../Post/Post.css';
 const Post = () => {
     const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
+  const img = useSelector((state) => state.profilePhoto.img);
+  const   {userData} = useSelector((s)=>s.user)
+
   const handleLikeClick = (postId) => {
     // Check if the post is already liked or not
     const isLiked = posts.find((post) => post.date === postId)?.isLiked || false;
@@ -27,8 +30,11 @@ const Post = () => {
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <img src={post.userProfilePicture} alt="" className="postProfileImg" />
-                <span className="postUserName">{post.username}</span>
+                {/* <img src={post.userProfilePicture} alt="" className="postProfileImg" /> */}
+                <img src={img? URL.createObjectURL(img) :  userData?.profilePicture} alt="" width={60} className="profile1Img rounded-pill"
+                      height={60}  />
+
+                 <span className=" postUserName">{userData?.username}</span>
                 <span className="postDate">{post.date.toLocaleString()}</span>
               </div>
               <div className="postTopRight"> {/* Add your additional components here */}</div>

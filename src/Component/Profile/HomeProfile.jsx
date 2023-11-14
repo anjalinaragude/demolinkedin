@@ -24,23 +24,7 @@ const HomeProfile = () => {
                     </div>
                     <div className="proImg">
                 <Link to="/profile">
-                  {/* {img ? (
-                    <img
-                      src={URL.createObjectURL(img)}
-                      alt=""
-                      width={70}
-                      height={60}
-                      className="profile1Img rounded-pill"
-                    />
-                  ) : (
-                    <img
-                      src={userData?.profilePicture}
-                      alt=""
-                      width={70}
-                      height={60}
-                      className="profile1Img rounded-pill"
-                    />
-                  )} */}
+                 
                    <img src={img? URL.createObjectURL(img) :  userData?.profilePicture} alt="" width={60} className="profile1Img rounded-pill"
                       height={60}  />
                 </Link>
