@@ -6,7 +6,7 @@ import "../Home/Home.css";
 const HomeProfile = () => {
   const img = useSelector((state) => state.profilePhoto.img);
   const   {userData} = useSelector((s)=>s.user)
-
+  const backgroundImg = useSelector((state) => state.profilePhoto.backgroundImg);
   return (
     <div>
        <div className="card " >
@@ -14,13 +14,20 @@ const HomeProfile = () => {
                 <div className=" profile  ">
                   <div className="Img">
                     <div className="backImg">
-                      <img
+                      {/* <img
                         src="img/post.jpg"
                         width={"180"}
                         height={80}
                         alt=""
                         className="backgroundImg"
-                      />
+                      /> */}
+                       <img
+          src={backgroundImg ? URL.createObjectURL(backgroundImg) : "img/post.jpg"}
+          alt="Background"
+          className="popup-background-image p-2"
+          width={180}
+          height={80}
+        />  
                     </div>
                     <div className="proImg">
                 <Link to="/profile">

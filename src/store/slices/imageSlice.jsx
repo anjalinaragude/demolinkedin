@@ -21,9 +21,9 @@ const profilePhotoSlice = createSlice({
       state.backgroundImg = action.payload;
     },
     clearBackgroundImg: (state) => {
-      state.backgroundImg = null; // Reset to default background image URL
+      state.backgroundImg = null; 
     },
-    // Other actions related to the profile photo can be defined here
+    
   },
 });
 

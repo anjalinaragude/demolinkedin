@@ -145,11 +145,11 @@ const Education = () => {
               <div>
                 
                 
-              <div>{education.position}</div>
-                  <div>{education.company}</div>
-                  <div>{education.location}</div>
-                  <div>{education.stardivate}</div>
-                  <div>{education.endDate}</div>
+              <div>{education.school}</div>
+                  <div>{education.degree}</div>
+                  <div>{education.fieldOfStudy}</div>
+                  <div>{education.graduationYear}</div>
+                  <div>{education.grade}</div>
                   
                 
                 </div>
