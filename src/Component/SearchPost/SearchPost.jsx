@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "../SearchPost/SearchPost.css";
 import { useState } from "react";
 import { addPost } from "../../store/slices/postSlice";
+import { Button, Modal } from "react-bootstrap";
 const SearchPost = () => {
   const img = useSelector((state) => state.profilePhoto.img);
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -51,7 +52,7 @@ const SearchPost = () => {
             height={54}
           />
         </Link>
-        <div className="inputProfile px-2" style={{width:"100%"}} >
+        <div className="inputProfile px-2" style={{ width: "100%" }}>
           <input
             type="text"
             className="inputpost rounded-pill"
@@ -59,7 +60,7 @@ const SearchPost = () => {
             onClick={() => setPopupOpen(!isPopupOpen)}
           />
 
-          {isPopupOpen && (
+          {/* {isPopupOpen && (
             <div className="search-popup">
               <button onClick={() => setPopupOpen(!isPopupOpen)}>
                 Close Popup
@@ -90,7 +91,46 @@ const SearchPost = () => {
                 <button onClick={handlePost}>post</button>
               </div>
             </div>
-          )}
+          )} */}
+
+          <Modal
+            show={isPopupOpen}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header>
+              <Modal.Title id="contained-modal-title-vcenter">
+                {/* Modal heading */} Create the post
+              </Modal.Title>
+              <Button onClick={() => setPopupOpen(false)}>Close</Button>
+            </Modal.Header>
+            <Modal.Body>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <textarea
+                  onChange={(e) => setPostContent(e.target.value)}
+                  className="search-title"
+                  placeholder="What do you want to talk about?"
+                />
+                <div className="py-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                  />
+                </div>
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoChange}
+                />
+
+                <div className="text-end py-2">
+                  <Button onClick={handlePost}>post</Button>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </div>
       <div className="d-flex justify-content-around">
